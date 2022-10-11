@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    inetutils:
+      preferredNetworks:
+        - 192.168
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER_HOSTNAME:localhost}:8761/eureka/
+
+
+

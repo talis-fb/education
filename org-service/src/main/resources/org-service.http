@@ -1,0 +1,2 @@
+### org
+GET http://{{org-service-host}}/api/v1/org/organization/ufrn.br

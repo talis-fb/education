@@ -1,0 +1,54 @@
+server:
+  port: 8381
+
+spring:
+  application:
+    name: edu-service
+
+app:
+  gateways:
+    orcid:
+      host: orcid-service
+      version: v1
+      url: http://${app.gateways.orcid.host}//api/${app.gateways.orcid.version}
+
+    org:
+      host: org-service
+      version: v1
+      url: http://${app.gateways.org.host}/api/${app.gateways.org.version}
+
+  url:
+    fetch-organization-details: ${app.gateways.org.url}/org/organization/{url}
+    fetch-researcher-details: ${app.gateways.orcid.url}/orcid/researcher/{orcid}
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 10
+        sliding-window-type: TIME_BASED
+        sliding-window-size: 10
+        wait-duration-in-open-state: 50s
+        permitted-number-of-calls-in-half-open-state: 3
+
+    instances:
+      orcid:
+        base-config: default
+
+      org:
+        base-config: default
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 2s
+        cancel-running-future: true
+
+    instances:
+      orcid:
+        base-config: default
+
+      org:
+        base-config: default
+        timeout-duration: 10s

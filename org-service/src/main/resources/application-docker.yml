@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    inetutils:
+      preferredNetworks:
+        - 192.168
+
+  h2:
+    console:
+      enabled: false
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  sql:
+    init:
+      mode: always
+      platform: postgres
+      username: postgres
+      password: postgres
+      schema-locations: classpath:db/docker/schema.sql
+      data-locations: classpath:db/data.sql
+  datasource:
+    url: jdbc:postgresql://database-server:5432/postgres
+    username: postgres
+    password: postgres
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${DISCOVERY_SERVER_HOSTNAME:localhost}:8761/eureka/

@@ -1,0 +1,99 @@
+version: "3.7"
+
+networks:
+  orcid:
+
+services:
+  database-server:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    hostname: database-server
+    networks:
+      orcid:
+        aliases:
+          - database-server
+  discovery-server:
+    build:
+      dockerfile: ../docker-compose.dockerfile
+      context: discovery-server
+      args:
+        profile: docker
+        app: discovery-server
+    env_file:
+      - docker-compose.env
+    ports:
+      - "8761:8761"
+    hostname: discovery-server
+    networks:
+      orcid:
+        aliases:
+          - discovery-server
+  orcid-service:
+    build:
+      dockerfile: ../docker-compose.dockerfile
+      context: orcid-service
+      args:
+        profile: docker
+        app: orcid-service
+    env_file:
+      - docker-compose.env
+    depends_on:
+      - discovery-server
+    links:
+      - discovery-server
+    ports:
+      # - "8182-8189:8181" - error (address already in use)
+      - "8181"
+    hostname: orcid-service
+    networks:
+      orcid:
+        aliases:
+          - orcid-service
+  org-service:
+    build:
+      dockerfile: ../docker-compose.dockerfile
+      context: org-service
+      args:
+        profile: docker
+        app: org-service
+    env_file:
+      - docker-compose.env
+    depends_on:
+      - database-server
+      - discovery-server
+    links:
+      - database-server
+      - discovery-server
+    ports:
+      - "8281:8281"
+    hostname: org-service
+    networks:
+      orcid:
+        aliases:
+          - org-service
+  edu-service:
+    build:
+      dockerfile: ../docker-compose.dockerfile
+      context: edu-service
+      args:
+        profile: docker
+        app: edu-service
+    env_file:
+      - docker-compose.env
+    depends_on:
+      - discovery-server
+    links:
+      - discovery-server
+    ports:
+      - "8381:8381"
+    hostname: edu-service
+    networks:
+      orcid:
+        aliases:
+          - edu-service
