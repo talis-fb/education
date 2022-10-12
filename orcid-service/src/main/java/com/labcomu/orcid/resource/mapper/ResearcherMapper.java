@@ -1,16 +1,16 @@
-package com.labcomu.orcid.model.mapper;
+package com.labcomu.orcid.resource.mapper;
 
+import com.labcomu.orcid.resource.Researcher;
 import com.labcomu.orcid.resources.swagger.model.NameV20;
 import com.labcomu.orcid.resources.swagger.model.RecordV20;
-import com.labcomu.orcid.model.Researcher;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.NullValueMappingStrategy;
 
+import static org.mapstruct.NullValueMappingStrategy.RETURN_DEFAULT;
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT, uses = EducationMapper.class)
+@Mapper(componentModel = "spring", unmappedTargetPolicy = IGNORE, nullValueMappingStrategy = RETURN_DEFAULT, uses = EducationMapper.class)
 public interface ResearcherMapper {
 
     @Mapping(target = "orcid", source = "orcidIdentifier.path")

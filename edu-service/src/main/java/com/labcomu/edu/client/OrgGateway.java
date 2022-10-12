@@ -1,7 +1,7 @@
 package com.labcomu.edu.client;
 
 import com.labcomu.edu.configuration.EduProperties;
-import com.labcomu.edu.model.Organization;
+import com.labcomu.edu.resource.Organization;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
 import org.springframework.http.MediaType;

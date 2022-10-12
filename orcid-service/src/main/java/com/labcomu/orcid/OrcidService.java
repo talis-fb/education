@@ -1,7 +1,7 @@
 package com.labcomu.orcid;
 
-import com.labcomu.orcid.model.mapper.ResearcherMapper;
-import com.labcomu.orcid.model.Researcher;
+import com.labcomu.orcid.resource.mapper.ResearcherMapper;
+import com.labcomu.orcid.resource.Researcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;

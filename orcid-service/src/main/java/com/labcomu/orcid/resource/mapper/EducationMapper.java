@@ -1,7 +1,7 @@
-package com.labcomu.orcid.model.mapper;
+package com.labcomu.orcid.resource.mapper;
 
 import com.labcomu.orcid.resources.swagger.model.EducationSummaryV20;
-import com.labcomu.orcid.model.Education;
+import com.labcomu.orcid.resource.Education;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValueMappingStrategy;

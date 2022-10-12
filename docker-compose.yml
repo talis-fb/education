@@ -1,21 +1,21 @@
 version: "3.7"
 
 networks:
-  orcid:
+  education:
 
 services:
   database-server:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=education
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
     hostname: database-server
     networks:
-      orcid:
+      education:
         aliases:
           - database-server
   discovery-server:
@@ -31,7 +31,7 @@ services:
       - "8761:8761"
     hostname: discovery-server
     networks:
-      orcid:
+      education:
         aliases:
           - discovery-server
   orcid-service:
@@ -52,7 +52,7 @@ services:
       - "8181"
     hostname: orcid-service
     networks:
-      orcid:
+      education:
         aliases:
           - orcid-service
   org-service:
@@ -74,7 +74,7 @@ services:
       - "8281:8281"
     hostname: org-service
     networks:
-      orcid:
+      education:
         aliases:
           - org-service
   edu-service:
@@ -94,6 +94,6 @@ services:
       - "8381:8381"
     hostname: edu-service
     networks:
-      orcid:
+      education:
         aliases:
           - edu-service

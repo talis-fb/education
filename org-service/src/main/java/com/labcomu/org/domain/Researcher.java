@@ -1,26 +1,27 @@
 package com.labcomu.org.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
+@ToString
 @Entity(name = "researcher")
 public class Researcher {
     @Id
-    @GeneratedValue(strategy = AUTO)
-    @NotNull
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column(nullable = false)
     private String orcid;
 
-    @JsonBackReference
-    @NotNull
+    @ToString.Exclude
     @ManyToOne
     private Organization organization;
 }

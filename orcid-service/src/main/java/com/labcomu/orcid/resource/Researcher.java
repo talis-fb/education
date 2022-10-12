@@ -1,4 +1,4 @@
-package com.labcomu.orcid.model;
+package com.labcomu.orcid.resource;
 
 import lombok.Data;
 

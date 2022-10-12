@@ -1,2 +1,11 @@
-### org
+### organization
 GET http://{{org-service-host}}/api/v1/org/organization/ufrn.br
+
+### researcher
+POST http://localhost:8281/api/v1/org/organization/researcher/ufrn.br
+Content-Type: application/json
+
+{
+    "orcid": "0000-0002-5467-6458"
+}
+

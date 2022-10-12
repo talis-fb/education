@@ -28,3 +28,5 @@ docker compose up --detach
 
 
 https://github.com/docker/compose/issues/4950
+
+http://localhost:8281/h2-console

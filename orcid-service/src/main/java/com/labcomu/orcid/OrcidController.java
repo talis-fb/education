@@ -1,6 +1,6 @@
 package com.labcomu.orcid;
 
-import com.labcomu.orcid.model.Researcher;
+import com.labcomu.orcid.resource.Researcher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
