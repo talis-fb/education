@@ -1,5 +1,6 @@
 package com.labcomu.org;
 
+import com.labcomu.org.domain.Organization;
 import com.labcomu.org.domain.mapper.ResearcherMapper;
 import com.labcomu.org.domain.repository.OrganizationRepository;
 import com.labcomu.org.domain.repository.ResearcherRepository;
@@ -25,12 +26,18 @@ public class OrgService {
     private final ResearcherRepository researcherRepository;
 
     public Optional<ResourceOrganization> getOrganization(@NotNull final String url) {
-        return organizationRepository.findByUrl(url).map(resourceOrganizationMapper::map);
+        Optional<Organization> organization = organizationRepository.findByUrl(url);
+
+        // load researchers (lazy)
+        organization.ifPresent(Organization::getResearchers);
+
+        return organization.map(resourceOrganizationMapper::map);
     }
 
     public Optional<ResourceResearcher> createResearcher(@NotNull final String url, @NotNull ResourceResearcher resourceResearcher) {
         if (researcherRepository.existsByOrcid(resourceResearcher.getOrcid()))
             return Optional.empty();
+
         organizationRepository.findByUrl(url).map(resourceOrganizationMapper::map).ifPresent(resourceResearcher::setOrganization);
 
         return Optional.of(resourceResearcherMapper.map(researcherRepository.save(researcherMapper.map(resourceResearcher))));

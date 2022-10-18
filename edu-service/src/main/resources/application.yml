@@ -10,7 +10,7 @@ app:
     orcid:
       host: orcid-service
       version: v1
-      url: http://${app.gateways.orcid.host}//api/${app.gateways.orcid.version}
+      url: http://${app.gateways.orcid.host}/api/${app.gateways.orcid.version}
 
     org:
       host: org-service
