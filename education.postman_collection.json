@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "3341ee2e-ff9f-4a00-8ff0-ab81d44255c6",
+		"name": "education",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "orcid-service",
+			"item": [
+				{
+					"name": "check-server-status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8181/api/v1/orcid/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"v1",
+								"orcid",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch-record-details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8181/api/v1/orcid/researcher/0000-0002-2102-8577",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"v1",
+								"orcid",
+								"researcher",
+								"0000-0002-2102-8577"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "org-service",
+			"item": [
+				{
+					"name": "organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8281/api/v1/org/organization/ufrn.br",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8281",
+							"path": [
+								"api",
+								"v1",
+								"org",
+								"organization",
+								"ufrn.br"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "researcher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orcid\": \"0000-0002-5467-6458\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8281/api/v1/org/organization/researcher/ufrn.br",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8281",
+							"path": [
+								"api",
+								"v1",
+								"org",
+								"organization",
+								"researcher",
+								"ufrn.br"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "edu-service",
+			"item": [
+				{
+					"name": "organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8381/api/v1/edu/organization/ufrn.br",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8381",
+							"path": [
+								"api",
+								"v1",
+								"edu",
+								"organization",
+								"ufrn.br"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
