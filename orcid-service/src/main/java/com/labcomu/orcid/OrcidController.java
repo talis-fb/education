@@ -1,10 +1,12 @@
 package com.labcomu.orcid;
 
 import com.labcomu.faultinjection.annotation.Delay;
+import com.labcomu.faultinjection.annotation.Handle;
 import com.labcomu.faultinjection.annotation.Mutate;
-import com.labcomu.faultinjection.api.Mutator;
+import com.labcomu.faultinjection.api.Handler;
 import com.labcomu.orcid.resource.Researcher;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,14 +29,17 @@ public class OrcidController {
   }
 
   @GetMapping("researcher/{orcid}")
-  @Mutate(ResearcherMutator.class)
+  @Handle(handler = ResearcherHandler.class)
+  @Mutate(field = "orcid", set="orcid + 'XXX'")
+  @Mutate(field = "educations[0].role", set="YYY")
   public Researcher getResearcher(@NotNull @PathVariable String orcid) {
     return service.getResearcher(orcid);
   }
 
-  public static class ResearcherMutator implements Mutator<Researcher> {
+  @Component
+  public static class ResearcherHandler implements Handler<Researcher> {
     @Override
-    public void mutate(Researcher researcher) {
+    public void handle(Researcher researcher) {
       researcher.setName(researcher.getName() + " [MUTATE]");
     }
   }

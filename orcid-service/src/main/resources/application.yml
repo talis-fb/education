@@ -24,3 +24,10 @@ app:
   url:
     check-server-status: ${app.gateways.orcid.url}/status
     fetch-record-details: ${app.gateways.orcid.url}/{orcid}
+
+
+logging:
+  level:
+    com:
+      labcomu:
+        faultinjection: DEBUG
