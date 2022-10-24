@@ -80,6 +80,11 @@
             <artifactId>orcid-resources</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.labcomu</groupId>
+            <artifactId>fault-injection</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

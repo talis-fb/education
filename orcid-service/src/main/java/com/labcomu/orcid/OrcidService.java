@@ -1,14 +1,13 @@
 package com.labcomu.orcid;
 
-import com.labcomu.orcid.resource.mapper.ResearcherMapper;
 import com.labcomu.orcid.resource.Researcher;
+import com.labcomu.orcid.resource.mapper.ResearcherMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
-
-import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 @Service
 @Validated
@@ -18,7 +17,7 @@ public class OrcidService {
     private final ResearcherMapper researcherMapper;
 
     public boolean isActive() {
-        return isNotEmpty(gateway.getStatus());
+        return StringUtils.isNotEmpty(gateway.getStatus());
     }
 
     public Researcher getResearcher(@NotNull final String orcid) {

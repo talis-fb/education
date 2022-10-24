@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>fault-injection</module>
         <module>discovery-server</module>
         <module>orcid-resources</module>
         <module>orcid-service</module>
@@ -30,10 +31,6 @@
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>

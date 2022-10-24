@@ -59,7 +59,7 @@
                             <goal>repackage</goal>
                         </goals>
                         <configuration>
-                            <mainClass>com.labcomu.discovery.server.Application</mainClass>
+                            <mainClass>com.labcomu.discoveryserver.Application</mainClass>
                         </configuration>
                     </execution>
                 </executions>
