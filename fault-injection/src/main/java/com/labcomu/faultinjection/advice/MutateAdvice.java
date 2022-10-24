@@ -18,9 +18,7 @@ public class MutateAdvice {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Around("@annotation(com.labcomu.faultinjection.annotation.Mutate)")
     public Object handle(ProceedingJoinPoint point) throws Throwable {
-        MethodSignature signature = (MethodSignature) point.getSignature();
-
-        log.debug("'{}.{}' intercepted", signature.getDeclaringTypeName(), signature.getName());
+        Mutate mutate = AdviceUtil.init(Mutate.class, log, point);
 
         Mutate mutate = signature.getMethod().getAnnotation(Mutate.class);
 
@@ -33,5 +31,9 @@ public class MutateAdvice {
         mutator.mutate(value);
 
         return value;
+    }
+
+    public void doMutate(Mutate mutate, Object value) {
+        parser.parseExpression(mutate.field()).setValue(new StandardEvaluationContext(value), mutate.set());
     }
 }
