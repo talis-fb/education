@@ -12,14 +12,14 @@
 
 ## URL
 
-* Discovery Server : http://localhost:8761
-* Discovery Client : http://localhost:8081/service-instances/orcid-service
+* Discovery Server: http://localhost:8761
+* Discovery Client: http://localhost:8081/service-instances/orcid-service
 * H2 Database: http://localhost:8281/h2-console
 
 ## Testing
 
-* Postman file : education.postman_collection.json
-* IntelliJ : orcid-service.http, org-service.http, edu-service.http
+* Postman file: education.postman_collection.json
+* IntelliJ: orcid-service.http, org-service.http, edu-service.http
 
 # Links
 
