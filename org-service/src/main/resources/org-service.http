@@ -1,7 +1,7 @@
 ### organization
 GET http://{{org-service-host}}/api/v1/org/organization/ufrn.br
 
-###
+### researcher
 POST http://{{org-service-host}}/api/v1/org/organization/researcher/ufrn.br
 Content-Type: application/json
 
