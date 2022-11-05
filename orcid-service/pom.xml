@@ -6,7 +6,7 @@
         <relativePath>../service-parent</relativePath>
         <groupId>com.labcomu</groupId>
         <artifactId>service-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <name>${project.artifactId}</name>
     <artifactId>orcid-service</artifactId>
