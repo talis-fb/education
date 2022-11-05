@@ -15,7 +15,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>service-parent</module>
         <module>fault-injection</module>
         <module>discovery-server</module>
         <module>orcid-resources</module>
