@@ -1,11 +1,9 @@
+eureka:
+  instance:
+    hostname: discovery-server
+
 spring:
   cloud:
     inetutils:
       preferredNetworks:
         - 192.168
-
-eureka:
-  instance:
-    hostname: discovery-server
-
-

@@ -5,22 +5,12 @@ spring:
   application:
     name: orcid-service
 
-eureka:
-  client:
-    service-url:
-      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
-    enabled: false
-
-  instance:
-    prefer-ip-address: true
-
 app:
   gateways:
     orcid:
       host: pub.orcid.org
       version: v2.1
       url: https://${app.gateways.orcid.host}/${app.gateways.orcid.version}
-
   url:
     check-server-status: ${app.gateways.orcid.url}/status
     fetch-record-details: ${app.gateways.orcid.url}/{orcid}

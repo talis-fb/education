@@ -11,12 +11,10 @@ app:
       host: orcid-service
       version: v1
       url: http://${app.gateways.orcid.host}/api/${app.gateways.orcid.version}
-
     org:
       host: org-service
       version: v1
       url: http://${app.gateways.org.host}/api/${app.gateways.org.version}
-
   url:
     fetch-organization-details: ${app.gateways.org.url}/org/organization/{url}
     fetch-researcher-details: ${app.gateways.orcid.url}/orcid/researcher/{orcid}

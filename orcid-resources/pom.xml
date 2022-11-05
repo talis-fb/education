@@ -12,28 +12,61 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <base.package>${project.groupId}.orcid.resources.swagger</base.package>
+        <jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
+        <swagger.version>2.2.6</swagger.version>
+        <openapi-generator-maven-plugin.version>6.2.1</openapi-generator-maven-plugin.version>
 
-        <gson-fire-version>1.8.5</gson-fire-version>
-        <gson-version>2.9.0</gson-version>
-        <jackson-core.version>2.13.4</jackson-core.version>
-        <jackson-databind-nullable.version>0.2.3</jackson-databind-nullable.version>
-        <javax-annotation.version>1.3.2</javax-annotation.version>
-        <okhttp-version>2.7.5</okhttp-version>
-        <swagger-core-version>2.2.2</swagger-core-version>
-        <threetenbp-version>1.6.1</threetenbp-version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
-
-        <openapi-generator-maven-plugin.version>6.0.1</openapi-generator-maven-plugin.version>
+        <!-- If enabled: generateApis, generateApiTests, generateModelTests -->
+        <!--<gson-fire.version>1.8.5</gson-fire.version>-->
+        <!--<threetenbp.version>1.6.4</threetenbp.version>-->
+        <!-- cannot use 'okhttp.version' -->
+        <!--<okhttp.local-version>2.7.5</okhttp.local-version>-->
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${jackson-databind-nullable.version}</version>
+            </dependency>
+
+            <!-- If enabled: generateApis, generateApiTests, generateModelTests -->
+            <!--<dependency>-->
+            <!--    <groupId>com.squareup.okhttp</groupId>-->
+            <!--    <artifactId>okhttp</artifactId>-->
+            <!--    <version>${okhttp.local-version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+            <!--    <groupId>com.squareup.okhttp</groupId>-->
+            <!--    <artifactId>logging-interceptor</artifactId>-->
+            <!--    <version>${okhttp.local-version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+            <!--    <groupId>io.gsonfire</groupId>-->
+            <!--    <artifactId>gson-fire</artifactId>-->
+            <!--    <version>${gson-fire.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+            <!--    <groupId>org.threeten</groupId>-->
+            <!--    <artifactId>threetenbp</artifactId>-->
+            <!--    <version>${threetenbp.version}</version>-->
+            <!--</dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -41,58 +74,51 @@
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
-            <version>${swagger-core-version}</version>
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-models</artifactId>
-            <version>${swagger-core-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>logging-interceptor</artifactId>
-            <version>${okhttp-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.gsonfire</groupId>
-            <artifactId>gson-fire</artifactId>
-            <version>${gson-fire-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.threeten</groupId>
-            <artifactId>threetenbp</artifactId>
-            <version>${threetenbp-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>${javax-annotation.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-core.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>${jackson-databind-nullable.version}</version>
         </dependency>
+
+        <!-- If enabled: generateApis, generateApiTests, generateModelTests -->
+        <!--<dependency>-->
+        <!--    <groupId>org.springframework.boot</groupId>-->
+        <!--    <artifactId>spring-boot-starter-test</artifactId>-->
+        <!--    <scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>com.squareup.okhttp</groupId>-->
+        <!--    <artifactId>okhttp</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>com.squareup.okhttp</groupId>-->
+        <!--    <artifactId>logging-interceptor</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>com.google.code.gson</groupId>-->
+        <!--    <artifactId>gson</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>io.gsonfire</groupId>-->
+        <!--    <artifactId>gson-fire</artifactId>-->
+        <!--    <version>${gson-fire.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>org.threeten</groupId>-->
+        <!--    <artifactId>threetenbp</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--    <artifactId>jackson-databind</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -125,7 +151,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
