@@ -1,6 +1,17 @@
 server:
   port: 8761
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+    info:
+      enabled: true
+
 spring:
   application:
     name: discovery-server

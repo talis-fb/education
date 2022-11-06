@@ -1,6 +1,17 @@
 server:
   port: 8381
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+    info:
+      enabled: true
+
 spring:
   application:
     name: edu-service
