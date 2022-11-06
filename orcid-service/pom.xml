@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>com.labcomu</groupId>
                 <artifactId>orcid-resources</artifactId>
-                <version>${project.parent.version}</version>
+                <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

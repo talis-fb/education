@@ -44,7 +44,7 @@
             <dependency>
                 <groupId>com.labcomu</groupId>
                 <artifactId>fault-injection</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
