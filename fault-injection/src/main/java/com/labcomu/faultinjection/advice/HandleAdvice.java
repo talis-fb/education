@@ -2,7 +2,6 @@ package com.labcomu.faultinjection.advice;
 
 import com.labcomu.faultinjection.annotation.Handle;
 import com.labcomu.faultinjection.api.Handler;
-import com.labcomu.faultinjection.util.AdviceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnExpression("${aspect.enabled:true}")
 @Slf4j
-public class HandleAdvice {
+public class HandleAdvice extends Advice<Handle> {
     private final ApplicationContext context;
 
     public HandleAdvice(ApplicationContext context) {
@@ -24,16 +23,23 @@ public class HandleAdvice {
 
     @Around("@annotation(com.labcomu.faultinjection.annotation.Handle)")
     public Object handle(ProceedingJoinPoint point) throws Throwable {
-        Handle handle = AdviceUtil.init(Handle.class, log, point);
+        return super.advice(Handle.class, log, point);
+    }
 
+    protected double threshold(Handle handle) {
+        return handle.threshold();
+    }
+
+    protected Object apply(Handle handle, ProceedingJoinPoint point) throws Throwable {
         Object value = point.proceed();
 
-        doHandle(handle, value);
+        doApply(handle, value);
 
         return value;
     }
+
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public void doHandle(Handle handle, Object value) {
+    public void doApply(Handle handle, Object value) {
         Handler handler = context.getBean(handle.handler());
         handler.handle(value);
     }

@@ -1,7 +1,6 @@
 package com.labcomu.faultinjection.advice;
 
 import com.labcomu.faultinjection.annotation.internal.Mutates;
-import com.labcomu.faultinjection.util.AdviceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,7 +14,7 @@ import java.util.stream.Stream;
 @Component
 @ConditionalOnExpression("${aspect.enabled:true}")
 @Slf4j
-public class MutatesAdvice {
+public class MutatesAdvice extends Advice<Mutates> {
     private final MutateAdvice advice;
 
     public MutatesAdvice(MutateAdvice advice) {
@@ -24,11 +23,17 @@ public class MutatesAdvice {
 
     @Around("@annotation(com.labcomu.faultinjection.annotation.internal.Mutates)")
     public Object handle(ProceedingJoinPoint point) throws Throwable {
-        Mutates mutates = AdviceUtil.init(Mutates.class, log, point);
+        return super.advice(Mutates.class, log, point);
+    }
 
+    protected double threshold(Mutates mutates) {
+        return mutates.threshold();
+    }
+
+    protected Object apply(Mutates mutates, ProceedingJoinPoint point) throws Throwable {
         Object value = point.proceed();
 
-        Stream.of(mutates.value()).forEach(mutate -> advice.doMutate(mutate, value));
+        Stream.of(mutates.value()).forEach(mutate -> advice.doApply(mutate, value));
 
         return value;
     }

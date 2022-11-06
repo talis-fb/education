@@ -15,15 +15,15 @@ import javax.validation.constraints.NotNull;
 @Validated
 @RequiredArgsConstructor
 public class OrcidController {
-  private final OrcidService service;
+    private final OrcidService service;
 
-  @GetMapping("active")
-  public boolean isActive() {
-    return service.isActive();
-  }
+    @GetMapping("active")
+    public boolean isActive() {
+        return service.isActive();
+    }
 
-  @GetMapping("researcher/{orcid}")
-  public Researcher getResearcher(@NotNull @PathVariable String orcid) {
-    return service.getResearcher(orcid);
-  }
+    @GetMapping("researcher/{orcid}")
+    public Researcher getResearcher(@NotNull @PathVariable String orcid) {
+        return service.getResearcher(orcid);
+    }
 }

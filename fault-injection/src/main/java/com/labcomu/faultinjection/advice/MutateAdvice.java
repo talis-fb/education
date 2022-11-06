@@ -1,7 +1,6 @@
 package com.labcomu.faultinjection.advice;
 
 import com.labcomu.faultinjection.annotation.Mutate;
-import com.labcomu.faultinjection.util.AdviceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,25 +14,31 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnExpression("${aspect.enabled:true}")
 @Slf4j
-public class MutateAdvice {
+public class MutateAdvice extends Advice<Mutate> {
     private final SpelExpressionParser parser;
 
     public MutateAdvice(SpelExpressionParser parser) {
         this.parser = parser;
     }
 
-    @Around("@annotation(com.labcomu.faultinjection.annotation.Mutate)")
+    @Around("@annotation(com.labcomu.faultinjection.annotation.Handle)")
     public Object handle(ProceedingJoinPoint point) throws Throwable {
-        Mutate mutate = AdviceUtil.init(Mutate.class, log, point);
+        return super.advice(Mutate.class, log, point);
+    }
 
+    protected double threshold(Mutate mutate) {
+        return mutate.threshold();
+    }
+
+    protected Object apply(Mutate mutate, ProceedingJoinPoint point) throws Throwable {
         Object value = point.proceed();
 
-        doMutate(mutate, value);
+        doApply(mutate, value);
 
         return value;
     }
 
-    public void doMutate(Mutate mutate, Object value) {
+    public void doApply(Mutate mutate, Object value) {
         parser.parseExpression(mutate.field()).setValue(new StandardEvaluationContext(value), mutate.set());
     }
 }

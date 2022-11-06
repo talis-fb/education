@@ -8,6 +8,8 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Mutate {
+    float threshold() default 1f;
+
     String field();
 
     String set();

@@ -5,19 +5,18 @@
 * Docker Desktop
 
 ## Run
-
 * mvn clean install
-* ./start.sh 
-  * shell script (use within Git Bash under Windows)
+* Local: `./start.sh` / `./stop.sh`
+  * shell script (use Git Bash)
+* Docker: `./up.sh` / `./down.sh` 
+  * shell script (use Git Bash)
 
 ## URL
-
 * Discovery Server: http://localhost:8761
 * Discovery Client: http://localhost:8081/service-instances/orcid-service
 * H2 Database: http://localhost:8281/h2-console
 
 ## Testing
-
 * Postman file: education.postman_collection.json
 * IntelliJ: orcid-service.http, org-service.http, edu-service.http
 
@@ -31,14 +30,12 @@
 * https://resilience4j.readme.io/docs
 
 ### Resilience4J + Spring Cloud
-
 * https://reflectoring.io/rate-limiting-with-springboot-resilience4j
 * https://reflectoring.io/retry-with-springboot-resilience4j
 * https://docs.spring.io/spring-cloud-circuitbreaker/docs/current/reference/html/spring-cloud-circuitbreaker-resilience4j.html
 * https://betterprogramming.pub/implementing-reactive-circuit-breaker-using-resilience4j-4fe81d28e100
 
 ## Others
-
 * https://github.com/docker/compose/issues/4950
 
 

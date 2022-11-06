@@ -8,5 +8,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Throw {
+    float threshold() default 1f;
+
     Class<? extends Exception> exception() default RuntimeException.class;
 }

@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  edu-service:
+    build:
+      dockerfile: ../docker-compose-compile.dockerfile
+      context: edu-service
+      args:
+        profile: docker
+        app: edu-service
