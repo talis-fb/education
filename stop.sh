@@ -1,9 +1,9 @@
 #!/bin/bash
 
 do_local() {
-  for PORT in 8181 8281 8381 8761
+  for APP in discovery-server orcid-service org-service edu-service
   do
-    curl -X POST http://localhost:${PORT}/actuator/shutdown
+      ps -aux | grep ${APP} | grep -v grep | awk '{print $2}' | xargs kill
   done
 }
 
