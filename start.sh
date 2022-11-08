@@ -10,7 +10,7 @@ do_local() {
 }
 
 do_docker() {
-  docker compose up --detach --file
+  docker compose --file docker-compose.yml up --detach
 }
 
 . ./do.sh Start $@
