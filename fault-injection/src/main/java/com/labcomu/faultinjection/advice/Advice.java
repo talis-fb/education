@@ -10,7 +10,9 @@ public abstract class Advice<A extends Annotation> {
     protected Object advice(Class<A> clazz, Logger log, ProceedingJoinPoint point) throws Throwable {
         A annotation = init(clazz, log, point);
 
-        return threshold(annotation) < Math.random() ? apply(annotation, point) : point.proceed();
+        double threshold = threshold(annotation);
+
+        return (threshold < 0 || threshold > 1 || threshold < Math.random()) ? apply(annotation, point) : point.proceed();
     }
 
     private A init(Class<A> clazz, Logger log, ProceedingJoinPoint point) {

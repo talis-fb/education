@@ -9,10 +9,7 @@ import java.time.temporal.ChronoUnit;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Delay {
-//    @Valid
-//    @Min(0)
-//    @Max(1)
-    double threshold() default 1.0;
+    double threshold() default -1;
 
     ChronoUnit unit() default ChronoUnit.SECONDS;
 

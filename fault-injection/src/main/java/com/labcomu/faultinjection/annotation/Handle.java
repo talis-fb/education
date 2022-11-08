@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Handle {
-    float threshold() default 1f;
+    float threshold() default -1;
 
     @SuppressWarnings("rawtypes")
     Class<? extends Handler> handler();
