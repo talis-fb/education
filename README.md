@@ -1,5 +1,15 @@
 # education
 
+## Diagrams
+
+### Components
+
+![Component Diagram](education-component.drawio.png)
+
+### Deployment
+
+![Deployment Diagram](education-deployment.drawio.png)
+
 ## Requirements
 * Java 19 + Maven **and/or**
 * Docker Desktop 4.12.0
@@ -20,6 +30,8 @@
 * Postman file: education.postman_collection.json
 * IntelliJ: orcid-service.http, org-service.http, edu-service.http
 * Script: `./test.sh [--local|--docker]`
+
+
 
 # Links
 
