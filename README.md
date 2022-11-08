@@ -1,14 +1,15 @@
 # education
 
 ## Requirements
-* Java 19 + Maven
-* Docker Desktop 4.12.0 (or later)
+* Java 19 + Maven **and/or**
+* Docker Desktop 4.12.0
   * Configure project root directory on Docker Desktop (Settings > Resources > Advanced > File Sharing)
 
 ## Commands (use Git Bash)
 * `./compile.sh [--local|--docker]`
 * `./start.sh [--local|--docker]`
 * `./stop.sh [--local|--docker]`
+* `./test.sh [--local|--docker]`
 
 ## URL
 * Discovery Server: http://localhost:8761
@@ -18,6 +19,7 @@
 ## Testing
 * Postman file: education.postman_collection.json
 * IntelliJ: orcid-service.http, org-service.http, edu-service.http
+* Script: `./test.sh [--local|--docker]`
 
 # Links
 
