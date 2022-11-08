@@ -1,10 +1,10 @@
 #!/bin/bash
 
-local() {
+do_local() {
   echo "LOCAL"
 }
 
-docker() {
+do_docker() {
   echo "DOCKER"
 }
 

@@ -32,11 +32,11 @@ do
   option="${1}"
   case ${option} in
       -l|--local)
-        local
+        do_local
         shift
       ;;
       -d|--docker)
-        docker
+        do_docker
         shift
       ;;
       *) # unknown option
