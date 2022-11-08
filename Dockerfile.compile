@@ -1,0 +1,11 @@
+FROM maven:3-eclipse-temurin-19-alpine
+
+# -----------------------------------------------------------------------------
+
+MAINTAINER Felipe Toledo G Oliveira <ftgo@ppgsc.ufrn.br>
+
+# -----------------------------------------------------------------------------
+
+WORKDIR /app
+
+CMD ["mvn", "clean", "install"]

@@ -2,14 +2,13 @@
 
 ## Requirements
 * Java 19 + Maven
-* Docker Desktop
+* Docker Desktop 4.12.0 (or later)
+  * Configure project root directory on Docker Desktop (Settings > Resources > Advanced > File Sharing)
 
-## Run
-* mvn clean install
-* Local: `./start.sh` / `./stop.sh`
-  * shell script (use Git Bash)
-* Docker: `./up.sh` / `./down.sh` 
-  * shell script (use Git Bash)
+## Commands (use Git Bash)
+* `./compile.sh [--local|--docker]`
+* `./start.sh [--local|--docker]`
+* `./stop.sh [--local|--docker]`
 
 ## URL
 * Discovery Server: http://localhost:8761

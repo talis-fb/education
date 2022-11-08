@@ -20,13 +20,13 @@ services:
           - database-server
   discovery-server:
     build:
-      dockerfile: ../docker-compose.dockerfile
+      dockerfile: ../education.docker
       context: discovery-server
       args:
         profile: docker
         app: discovery-server
     env_file:
-      - docker-compose.env
+      - education.docker.env
     ports:
       - "8761:8761"
     hostname: discovery-server
@@ -36,13 +36,13 @@ services:
           - discovery-server
   orcid-service:
     build:
-      dockerfile: ../docker-compose.dockerfile
+      dockerfile: ../education.docker
       context: orcid-service
       args:
         profile: docker
         app: orcid-service
     env_file:
-      - docker-compose.env
+      - education.docker.env
     depends_on:
       - discovery-server
     links:
@@ -57,13 +57,13 @@ services:
           - orcid-service
   org-service:
     build:
-      dockerfile: ../docker-compose.dockerfile
+      dockerfile: ../education.docker
       context: org-service
       args:
         profile: docker
         app: org-service
     env_file:
-      - docker-compose.env
+      - education.docker.env
     depends_on:
       - database-server
       - discovery-server
@@ -79,13 +79,13 @@ services:
           - org-service
   edu-service:
     build:
-      dockerfile: ../docker-compose.dockerfile
+      dockerfile: ../education.docker
       context: edu-service
       args:
         profile: docker
         app: edu-service
     env_file:
-      - docker-compose.env
+      - education.docker.env
     depends_on:
       - discovery-server
     links:
