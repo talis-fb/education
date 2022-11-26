@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.github.resilience4j.retry.annotation.Retry;
+import com.labcomu.faultinjection.annotation.Throw;
 
 import javax.validation.constraints.NotNull;
 
@@ -22,8 +24,11 @@ public class OrcidController {
         return service.isActive();
     }
 
+    @Retry(name = "getResearcher")
+    @Throw(exception = RuntimeException.class, threshold = 0.5)
     @GetMapping("researcher/{orcid}")
     public Researcher getResearcher(@NotNull @PathVariable String orcid) {
+        System.out.println("[Orcid Controller] getResearcher CALLED");
         return service.getResearcher(orcid);
     }
 }
