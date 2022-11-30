@@ -55,6 +55,10 @@ services:
       education:
         aliases:
           - orcid-service
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
   org-service:
     build:
       dockerfile: ../Dockerfile.runtime

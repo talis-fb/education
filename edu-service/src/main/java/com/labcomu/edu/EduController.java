@@ -27,7 +27,7 @@ public class EduController {
   }
 
   public Organization fallbackOrgService (Exception e){
-    System.out.println("[=== ERROR ===] -> OrgService is down");
+    System.out.println("[=== ERROR ===] -> OrgService is down: " + e);
     throw new ResponseStatusException(
             HttpStatus.BAD_GATEWAY,
             "Org-Service not avaible"
